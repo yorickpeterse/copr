@@ -8,8 +8,17 @@ License: MPL-2.0
 URL:     https://github.com/inko-lang/inko
 Source:  https://github.com/inko-lang/inko/archive/refs/tags/v%{version}.tar.gz
 
-BuildRequires: gcc make rust cargo llvm15 llvm15-devel llvm15-static libstdc++-devel libstdc++-static libffi-devel zlib-devel git
-Requires: libgcc gcc
+%if 0%{?fedora} >= 38
+BuildRequires: llvm15 llvm15-devel llvm15-static
+%else
+BuildRequires: llvm llvm-devel llvm-static
+%endif
+
+BuildRequires: rust >= 1.63.0
+BuildRequires: cargo >= 1.63.0
+BuildRequires: gcc make
+BuildRequires: libstdc++-devel libstdc++-static libffi-devel zlib-devel git
+Requires: libgcc gcc git
 
 %description
 Inko is a language for building concurrent software with confidence. Inko makes
