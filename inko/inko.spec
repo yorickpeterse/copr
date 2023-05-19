@@ -2,7 +2,7 @@
 
 Name:    inko
 Version: 0.11.0
-Release: %autorelease
+Release: 2
 Summary: A language for building concurrent software with confidence
 License: MPL-2.0
 URL:     https://github.com/inko-lang/inko
