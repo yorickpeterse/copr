@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:    stylua
-Version: 0.18.1
+Version: 0.18.2
 Release: %autorelease
 Summary: An opinionated Lua code formatter
 License: MPL-2.0
