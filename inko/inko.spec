@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:    inko
-Version: 0.12.0
+Version: 0.13.1
 Release: 1
 Summary: A language for building concurrent software with confidence
 License: MPL-2.0
@@ -14,8 +14,8 @@ BuildRequires: llvm15 llvm15-devel llvm15-static
 BuildRequires: llvm llvm-devel llvm-static
 %endif
 
-BuildRequires: rust >= 1.63.0
-BuildRequires: cargo >= 1.63.0
+BuildRequires: rust >= 1.68.0
+BuildRequires: cargo >= 1.68.0
 BuildRequires: gcc make
 BuildRequires: libstdc++-devel libstdc++-static libffi-devel zlib-devel git
 Requires: libgcc gcc git
