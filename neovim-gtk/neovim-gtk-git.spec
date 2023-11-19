@@ -2,7 +2,7 @@
 
 Name:    neovim-gtk-git
 Version: {{{ git_dir_version }}}
-Release: 1%{dist}
+Release: 1%{?dist}
 Summary: A GTK4 UI for NeoVim, written in Rust
 
 License: GPLv3
