@@ -16,5 +16,5 @@ then
     cp -r sources/* "${top}/SOURCES"
 fi
 
-rpmbuild --define "_topdir ${top}" -bs
+rpmbuild --define "_topdir ${top}" -bs *.spec
 mv "${top}"/SRPMS/*.src.rpm "${1}"
