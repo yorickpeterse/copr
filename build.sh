@@ -9,12 +9,12 @@ then
     dnf --quiet --assumeyes install rpmdevtools
 fi
 
-spectool --define "_topdir ${top}" -gR "${1}"
+spectool --define "_topdir ${top}" -gR
 
 if [[ -d sources ]]
 then
     cp -r sources/* "${top}/SOURCES"
 fi
 
-rpmbuild --define "_topdir ${top}" -bs "${1}"
-mv "${top}"/SRPMS/*.src.rpm "${2}"
+rpmbuild --define "_topdir ${top}" -bs
+mv "${top}"/SRPMS/*.src.rpm "${1}"
