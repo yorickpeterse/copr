@@ -46,14 +46,4 @@ cp -r locale meta script %{buildroot}%{optdir}
 %{_bindir}/lua-language-server
 
 %changelog
-* Fri Mar 10 2023 Yorick Peterse <fedora@yorickpeterse.com> - 3.6.17-1
-- Release 3.6.17
-* Thu Mar 02 2023 Yorick Peterse <fedora@yorickpeterse.com> - 3.6.11-4
-- Build from a zip archive that contains all submodules
-* Wed Mar 01 2023 Yorick Peterse <git@yorickpeterse.com> 3.6.11-3
-- Fix the patch for the header file (git@yorickpeterse.com)
-* Wed Mar 01 2023 Yorick Peterse <git@yorickpeterse.com> 3.6.11-2
-- Fix building on Fedora 38/Rawhide
-- Include changelog.md so the --version flag reports the correct version
-* Tue Feb 28 2023 Yorick Peterse <git@yorickpeterse.com> 3.6.11-1
-- First release
+%autochangelog
