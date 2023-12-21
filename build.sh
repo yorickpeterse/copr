@@ -6,7 +6,7 @@ top="${PWD}/build"
 
 if ! command -v spectool
 then
-    sudo dnf install rpmdevtools
+    dnf --quiet --assumeyes install rpmdevtools
 fi
 
 spectool --define "_topdir ${top}" -gR "${1}"
