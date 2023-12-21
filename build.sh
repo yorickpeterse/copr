@@ -9,7 +9,7 @@ then
     dnf --quiet --assumeyes install rpmdevtools
 fi
 
-spectool --define "_topdir ${top}" -gR
+spectool --define "_topdir ${top}" -gR *.spec
 
 if [[ -d sources ]]
 then
