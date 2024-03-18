@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:    lua-language-server
-Version: 3.7.3
+Version: 3.7.4
 Release: 1%{?dist}
 Summary: A language server that offers Lua language support
 License: MIT
