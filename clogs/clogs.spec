@@ -2,7 +2,7 @@
 
 Name:    clogs
 Version: 0.3.0
-Release: 1
+Release: 2%{?dist}
 Summary: Generate a changelog from Git commits containing trailers
 License: MPL-2.0
 URL:     https://github.com/yorickpeterse/clogs

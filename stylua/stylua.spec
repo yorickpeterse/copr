@@ -2,7 +2,7 @@
 
 Name:    stylua
 Version: 0.20.0
-Release: %autorelease
+Release: 1%{?dist}
 Summary: An opinionated Lua code formatter
 License: MPL-2.0
 URL:     https://github.com/JohnnyMorganz/StyLua
