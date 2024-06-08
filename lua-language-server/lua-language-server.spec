@@ -1,49 +1,58 @@
 %global debug_package %{nil}
 
-Name:    lua-language-server
-Version: 3.9.1
-Release: 1%{?dist}
-Summary: A language server that offers Lua language support
-License: MIT
-URL:     https://github.com/LuaLS/lua-language-server
-Source0: https://github.com/LuaLS/lua-language-server/releases/download/%{version}/lua-language-server-%{version}-submodules.zip
-Source1: wrapper
-
-BuildRequires: git
+Name:          lua-language-server
+Version:       3.9.2
+Release:       1%{?dist}
+Summary:       A language server that offers Lua language support
+License:       BSD-3-Clause AND BSL-1.0 AND LGPL-2.1 AND MIT AND Unlicense
+URL:           https://github.com/LuaLS/lua-language-server
+Source0:       %{url}/releases/download/%{version}/%{name}-%{version}-submodules.zip
+Source1:       lua-lsp-launcher.sh
+ExcludeArch:   s390x ppc64le ppc64
+BuildRequires: fdupes
 BuildRequires: gcc-c++
-BuildRequires: ninja-build
-BuildRequires: libstdc++-devel
+BuildRequires: git
 BuildRequires: libstdc++-static
+BuildRequires: ninja-build
+BuildRequires: unzip
 
 %description
 A language server that offers Lua language support
 
 %prep
-%setup -q -c
+%autosetup -c
 
 %build
-cd 3rd/luamake
-./compile/install.sh
-cd ../..
-./3rd/luamake/luamake
-
-%global optdir /opt/%{name}
+sed "s#\(lm.cxx.*\)#\1\nlm.flags = '%{optflags}'\nlm.ldflags = '%{__global_ldflags}'#p" -i make.lua
+ninja -C 3rd/luamake -f compile/ninja/linux.ninja
+./3rd/luamake/luamake all
 
 %install
-%{__install} -D -m 755 bin/lua-language-server %{buildroot}%{optdir}/bin/lua-language-server
-%{__install} -D -m 644 bin/main.lua %{buildroot}%{optdir}/bin/main.lua
-%{__install} -D -m 644 main.lua %{buildroot}%{optdir}/main.lua
-%{__install} -D -m 664 debugger.lua %{buildroot}%{optdir}/debugger.lua
-%{__install} -D -m 664 changelog.md %{buildroot}%{optdir}/changelog.md
-cp -r locale meta script %{buildroot}%{optdir}
-%{__install} -D -m 755 %{SOURCE1} %{buildroot}%{_bindir}/lua-language-server
+install -d -m 0755 %{buildroot}%{_libexecdir}/%{name}
+cp -av bin/* %{buildroot}%{_libexecdir}/%{name}
+install -d -m 0755 %{buildroot}%{_datadir}/%{name}
+cp -av \
+    debugger.lua \
+    main.lua \
+    locale \
+    script \
+    meta \
+    %{buildroot}%{_datadir}/%{name}/
+install -d -m 0755 %{buildroot}%{_bindir}
+sed -e 's#@LIBEXECDIR@#%{_libexecdir}#' %{SOURCE1} > %{buildroot}%{_bindir}/%{name}
+chmod 0755 %{buildroot}%{_bindir}/%{name}
+
+%fdupes %{buildroot}%{_libexecdir}/%{name}
+
+%check
+./3rd/luamake/luamake bee-test unit-test
 
 %files
 %license LICENSE
-%doc README.md
-
-%{optdir}
-%{_bindir}/lua-language-server
+%doc README.md changelog.md
+%{_bindir}/%{name}
+%{_libexecdir}/%{name}/
+%{_datadir}/%{name}/
 
 %changelog
 %autochangelog
