@@ -43,6 +43,7 @@ sed -e 's#@LIBEXECDIR@#%{_libexecdir}#' %{SOURCE1} > %{buildroot}%{_bindir}/%{na
 chmod 0755 %{buildroot}%{_bindir}/%{name}
 
 %fdupes %{buildroot}%{_libexecdir}/%{name}
+%fdupes %{buildroot}%{_datadir}/%{name}
 
 %check
 ./3rd/luamake/luamake bee-test unit-test
