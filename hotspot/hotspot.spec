@@ -1,6 +1,6 @@
 Name:    hotspot
 Version: 1.5.1
-Release: 4%{?dist}
+Release: 5%{?dist}
 Summary: The Linux perf GUI for performance analysis
 
 License: GPL-2.0-or-later
