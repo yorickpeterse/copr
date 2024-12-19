@@ -1,14 +1,16 @@
 Name:    hotspot
 Version: 1.5.1
-Release: 3%{?dist}
+Release: 4%{?dist}
 Summary: The Linux perf GUI for performance analysis
 
 License: GPL-2.0-or-later
 URL:     https://github.com/KDAB/hotspot
 
-Source0: https://github.com/KDAB/%{name}/archive/refs/tags/continuous.tar.gz
+Source0: https://github.com/KDAB/%{name}/releases/download/v%{version}/%{name}-v%{version}.tar.gz
 Source1: https://github.com/KDAB/hotspot/releases/download/v%{version}/hotspot-perfparser-v%{version}.tar.gz
 Source2: https://github.com/KDAB/hotspot/releases/download/v%{version}/hotspot-PrefixTickLabels-v%{version}.tar.gz
+
+Patch0:  0001-Patch-perfparser-to-handle-newer-perf-versions.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  cmake
@@ -51,7 +53,7 @@ KCachegrind around Linux perf.
 
 
 %prep
-%setup -q -n %{name}-continuous -a 1 -a 2
+%setup -q -n %{name} -a 1 -a 2
 mv perfparser/* 3rdparty/perfparser/
 mv PrefixTickLabels/* 3rdparty/PrefixTickLabels/
 
