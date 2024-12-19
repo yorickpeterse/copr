@@ -57,6 +57,7 @@ KCachegrind around Linux perf.
 mv perfparser/* 3rdparty/perfparser/
 mv PrefixTickLabels/* 3rdparty/PrefixTickLabels/
 
+%patch -P 0 -p1
 %build
 %cmake_kf6 -DQT6_BUILD=TRUE
 %cmake_build
