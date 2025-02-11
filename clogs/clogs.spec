@@ -1,14 +1,14 @@
 %global debug_package %{nil}
 
 Name:    clogs
-Version: 0.7.0
+Version: 0.8.0
 Release: 1%{?dist}
 Summary: Generate a changelog from Git commits containing trailers
 License: MPL-2.0
 URL:     https://github.com/yorickpeterse/clogs
 Source:  https://github.com/yorickpeterse/clogs/archive/refs/tags/v%{version}.tar.gz
 
-BuildRequires: inko >= 0.17.0
+BuildRequires: inko >= 0.18.0
 Requires: git
 
 %description
