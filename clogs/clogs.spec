@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:    clogs
-Version: 0.8.0
+Version: 0.9.0
 Release: 1%{?dist}
 Summary: Generate a changelog from Git commits containing trailers
 License: MPL-2.0
