@@ -22,7 +22,7 @@ style.
 
 %prep
 %autosetup -n StyLua-%{version} -p0
-%cargo_prep -a
+%{cargo_prep -a}
 
 %build
 %cargo_build
