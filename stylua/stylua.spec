@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:    stylua
-Version: 0.20.0
+Version: 2.1.0
 Release: 1%{?dist}
 Summary: An opinionated Lua code formatter
 License: MPL-2.0
@@ -22,13 +22,13 @@ style.
 
 %prep
 %autosetup -n StyLua-%{version} -p0
+%cargo_prep -a
 
 %build
-cargo build --release
+%cargo_build
 
 %install
-%{__install} -D -m755 target/release/%{name} %{buildroot}%{_bindir}/stylua
-%{__install} -D -m644 LICENSE.md %{buildroot}%{_datadir}/licenses/%{name}/LICENSE.md
+%cargo_install
 
 %changelog
 %autochangelog
