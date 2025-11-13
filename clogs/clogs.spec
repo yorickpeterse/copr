@@ -25,7 +25,7 @@ clogs is a tool for generating a Markdown changelog, populating the changelog fr
 make build
 
 %install
-%{__install} -D -m755 build/%{name} %{buildroot}%{_bindir}/%{name}
+%{__install} -D -m755 build/release/%{name} %{buildroot}%{_bindir}/%{name}
 %{__install} -D -m644 LICENSE %{buildroot}%{_datadir}/licenses/%{name}/LICENSE.md
 
 %changelog
